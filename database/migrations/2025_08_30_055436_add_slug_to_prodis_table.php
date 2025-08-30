@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('prodis', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->string('logo')->required();
-            $table->string('description')->required();
-            $table->timestamps();
-         });
+        Schema::table('prodis', function (Blueprint $table) {
+            $table->string('slug')->unique()->after('name');
+        });
     }
 
     /**
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('prodis', function (Blueprint $table) {
+            //
+        });
     }
 };

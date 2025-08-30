@@ -114,9 +114,8 @@ body {
     background-color: var(--light);
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
+    
+    /* padding: 16px; */
     color: #374151;
     line-height: 1.5;
 }
@@ -668,15 +667,15 @@ p {
     gap: 2rem;
 }
 
-.space-x-10{
+.space-x-10 {
     gap: 20px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-ul{
+ul {
     text-decoration: none;
     list-style: none;
 }
@@ -780,7 +779,78 @@ ul{
 .mobile-menu.active {
     display: block;
 }
+
 #mobile-menu-button {
     background-color: transparent;
     border: none;
+}
+
+/* Style untuk komponen pencarian */
+.search {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.input-focused {
+    position: relative;
+    background-color: var(--gray-50);
+    border-radius: var(--rounded-xl);
+    padding: 1rem;
+    border: 1px solid var(--gray-200);
+    transition: var(--transition);
+}
+
+.input-focused:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-focused .flex {
+    display: flex;
+    align-items: center;
+}
+
+.input-focused i {
+    color: var(--gray-400);
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.input-focused input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--gray-800);
+}
+
+.input-focused input::placeholder {
+    color: var(--gray-400);
+}
+
+/* Variasi style untuk komponen pencarian */
+.search-v2 .input-focused {
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+.search-v3 .input-focused {
+    border-radius: 50px;
+    padding: 0.8rem 1.2rem;
+}
+
+.search-v4 .input-focused {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-v4 .input-focused:focus-within {
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.search-v5 .input-focused {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }

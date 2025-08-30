@@ -5,11 +5,15 @@ use App\Mail\OtpMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('landingPage');
-})->name('landingPage');
+Route::get('/', [LandingController::class, 'index'])->name('landingPage');
+Route::get('/prodi/list', [LandingController::class, 'listProdi'])->name('listProdi');
+Route::post('/prodi/list', [LandingController::class, 'searchlistProdi'])->name('searchlistProdi');
+Route::get('prodi/{slug}/courses', [LandingController::class, 'prodiCourses'])->name('prodiCourses');
 Route::get("/auth/login", function () {
     return view('auth.loginPage');
 })->name(('login'));
@@ -19,9 +23,6 @@ Route::post('/auth/register', [AuthController::class, 'registerPost'])->name('re
 Route::get('/auth', function () {
     return redirect('/auth/login');
 });
-
-
-use Illuminate\Support\Facades\Session;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/auth/send-otp', function () {
@@ -48,9 +49,10 @@ Route::middleware(['auth'])->group(function () {
             'email' => Auth::user()->email
         ]);
     });
-    Route::get('auth/resend-otp', function (){
+    Route::get('auth/resend-otp', function () {
         Session::put('akses', 'register');
         return redirect('/auth/send-otp');
     });
     Route::post('/auth/verifyOTP', [AuthController::class, 'verifyOTP'])->name('verifyOTP');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });

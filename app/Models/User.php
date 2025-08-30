@@ -31,6 +31,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Prodi::class);
     }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'instructor_id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
