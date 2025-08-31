@@ -9,7 +9,7 @@
 
         <x-navbarLanding></x-navbarLanding>
 
-        <section id="programs" class="mb-16" aria-labelledby="programs-heading">
+        <section id="main-content" class="mb-16" aria-labelledby="programs-heading">
             <h2 id="programs-heading" class="text-3xl font-bold text-center text-primary mb-4">Courses in {{$prodi->name}}
             </h2>
             <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Dibawah Ini Adalah List Dari Kursus Yang tersedia di Program Studi {{$prodi->name}}</p>

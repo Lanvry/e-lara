@@ -4,7 +4,9 @@
 
 @section('content')
     @push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
         <link rel="stylesheet" href="{{ asset('css/dash.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
     @endpush
     <div class="dashboard">
         <!-- Sidebar -->
@@ -69,6 +71,7 @@
         </aside>
 
         <!-- Overlay -->
+        <div class="overlay side" id="overlayside"></div>
         <div class="overlay" id="overlay"></div>
 
         <!-- Notification Panel -->
@@ -81,6 +84,35 @@
             </div>
             <div class="notification-content">
                 <p>Notifikasi akan ditampilkan di sini. Fitur ini sedang dalam pengembangan.</p>
+            </div>
+        </div>
+
+        <div class="artifical-intelegence-panel" id="AIPanel">
+            <div class="panel-header">
+                <h3 class="panel-title">AI Agent</h3>
+                <button class="close-panel" id="closeAIPanel">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="AI-content">
+                <div class="chat-container" id="chatContainer">
+                    <!-- Messages will be added here -->
+                </div>
+
+                <div class="typing-indicator" id="typingIndicator">
+                    <span>Gemini Flash mengetik</span>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+                <div class="input-area">
+                    <textarea class="message-input" id="userInput" placeholder="Tanyakan tentang e-learning..."
+                        rows="1"></textarea>
+                    <button class="send-button" id="sendMessage">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -104,9 +136,9 @@
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge">3</span>
                     </div>
-                    <div class="messages-btn">
-                        <i class="fas fa-envelope"></i>
-                        <span class="notification-badge">5</span>
+                    <div class="messages-btn" aria-label="AI Agent" id="AIBtn">
+                        <i class="fas fa-robot"></i>
+                        {{-- <span class="notification-badge">5</span> --}}
                     </div>
                     <div class="profile-btn">
                         <i class="fas fa-user"></i>
@@ -387,7 +419,10 @@
     </div>
 
     @push('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
         <script src="{{ asset('js/dash.js') }}"></script>
+        <script src="{{ asset('js/chat.js') }}"></script>
     @endpush
 @endsection
 

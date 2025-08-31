@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{asset('css/auth.css')}}">
     @endpush
     <!-- Bagian kiri: Form login -->
-    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
         <div class="w-full max-w-md">
             <!-- Logo -->
             <div class="flex items-center justify-center mb-10">
@@ -19,13 +19,13 @@
             </div>
 
             <!-- Form title -->
-            <h1 class="text-3xl font-bold text-gray-800 mb-2">Masuk ke Akun Anda</h1>
-            <p class="text-gray-600 mb-10">Selamat datang kembali! Silakan masuk untuk melanjutkan</p>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="0">Masuk ke Akun Anda</h1>
+            <p class="text-gray-600 mb-10" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">Selamat datang kembali! Silakan masuk untuk melanjutkan</p>
 
             <!-- Form login -->
             <form class="space-y-6">
                 <!-- Email input -->
-                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition">
+                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                     <div class="flex items-center">
                         <i class="fas fa-envelope text-gray-400 mr-3"></i>
@@ -35,7 +35,7 @@
                 </div>
 
                 <!-- Password input -->
-                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition">
+                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-sm font-medium text-gray-700">Kata Sandi</label>
                         <a href="#" class="text-sm text-primary hover:text-secondary">Lupa kata sandi?</a>
@@ -50,15 +50,15 @@
                     </div>
                 </div>
 
-                <!-- Remember me -->
+                {{-- <!-- Remember me -->
                 <div class="flex items-center">
                     <input type="checkbox" id="remember"
                         class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
                     <label for="remember" class="ml-2 block text-sm text-gray-700">Ingat saya</label>
-                </div>
+                </div> --}}
 
                 <!-- Submit button -->
-                <button type="submit"
+                <button type="submit" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400"
                     class="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-secondary transition focus:outline-none focus:ring-4 focus:ring-blue-200">
                     Masuk
                 </button>
@@ -67,7 +67,7 @@
 
 
             <!-- Sign up link -->
-            <div class="text-center mt-10">
+            <div class="text-center mt-10" >
                 <p class="text-gray-600">Belum punya akun? <a href="{{route('register')}}"
                         class="text-primary font-medium hover:text-secondary">Daftar sekarang</a></p>
             </div>
@@ -79,27 +79,27 @@
         <div class="ambient-circle circle-1"></div>
         <div class="ambient-circle circle-2"></div>
 
-        <div class="max-w-md relative z-10">
-            <h2 class="text-4xl font-bold mb-6">Platform E-Learning Terbaik untuk Kampus</h2>
-            <p class="text-xl opacity-90 mb-10">Akses materi kuliah, ikuti kelas online, dan berkolaborasi dengan mudah di
+        <div class="max-w-md relative z-10" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+            <h2 class="text-4xl font-bold mb-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="0">Platform E-Learning Terbaik untuk Kampus</h2>
+            <p class="text-xl opacity-90 mb-10" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">Akses materi kuliah, ikuti kelas online, dan berkolaborasi dengan mudah di
                 satu platform terintegrasi.</p>
 
             <div class="space-y-6">
-                <div class="flex items-center">
+                <div class="flex items-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                     <div class="w-12 h-12 rounded-full bg-white bg-opacity-10 flex items-center justify-center mr-4">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <p>Dosen dan Mahasiswa Terverifikasi</p>
                 </div>
 
-                <div class="flex items-center">
+                <div class="flex items-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
                     <div class="w-12 h-12 rounded-full bg-white bg-opacity-10 flex items-center justify-center mr-4">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <p>Keamanan Data Terjamin</p>
                 </div>
 
-                <div class="flex items-center">
+                <div class="flex items-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">
                     <div class="w-12 h-12 rounded-full bg-white bg-opacity-10 flex items-center justify-center mr-4">
                         <i class="fas fa-cloud"></i>
                     </div>

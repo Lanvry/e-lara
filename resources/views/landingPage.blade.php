@@ -12,7 +12,7 @@
 
         <!-- Hero Section -->
         <main id="main-content">
-            <section class="hero-bg rounded-3xl p-8 md:p-12 lg:p-16 mb-16 relative overflow-hidden"
+            <section class="hero-bg rounded-3xl p-8 md:p-12 lg:p-16 mb-16 relative overflow-hidden" data-aos="fade-up" data-aos-duration="1000"
                 aria-labelledby="main-heading">
                 <div class="absolute inset-0 overflow-hidden">
                     <div class="absolute -top-24 -right-24 w-64 h-64 border-4 border-white border-opacity-10 rounded-full">
@@ -24,12 +24,12 @@
 
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 text-white">
-                        <h1 id="main-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Tingkatkan Pengalaman
+                        <h1 id="main-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1000">Tingkatkan Pengalaman
                             Belajar Mengajar Digital</h1>
-                        <p class="text-lg md:text-xl opacity-90 mb-8">Platform e-learning terintegrasi untuk civitas
+                        <p class="text-lg md:text-xl opacity-90 mb-8" data-aos="fade-up" data-aos-delay="250" data-aos-duration="1000">Platform e-learning terintegrasi untuk civitas
                             akademika kampus dengan fitur lengkap dan mudah digunakan.</p>
                         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                            <a href="/register"
+                            <a href="/register" 
                                 class="px-6 py-3 sm:px-8 sm:py-4 bg-white text-primary font-bold rounded-full text-center hover:bg-blue-50 transition">Mulai
                                 Sekarang</a>
                             <a href="#demo"
@@ -39,9 +39,9 @@
                     </div>
 
                     <div class="md:w-1/2 relative">
-                        <div class="floating">
+                        <div class="floating" >
                             <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='350' viewBox='0 0 500 350'><rect width='500' height='350' fill='%23f0f7ff' rx='20'/><circle cx='250' cy='120' r='70' fill='%232563eb'/><rect x='150' y='210' width='200' height='20' rx='10' fill='%233b82f6'/><rect x='180' y='240' width='140' height='15' rx='7.5' fill='%233b82f6' fill-opacity='0.7'/><rect x='120' y='270' width='260' height='10' rx='5' fill='%233b82f6' fill-opacity='0.5'/></svg>"
-                                alt="Ilustrasi Platform E-Learning EduCampus - Kelas Virtual dan Pembelajaran Online"
+                                alt="Ilustrasi Platform E-Learning EduCampus - Kelas Virtual dan Pembelajaran Online" data-aos="flip-left" data-aos-delay="150" data-aos-duration="1000"
                                 class="rounded-2xl shadow-xl w-full">
                         </div>
                     </div>
@@ -50,21 +50,21 @@
 
             <!-- Program Studi Section -->
             <section id="programs" class="mb-16" aria-labelledby="programs-heading">
-                <h2 id="programs-heading" class="text-3xl font-bold text-center text-primary mb-4">Program Studi Tersedia
+                <h2 id="programs-heading" class="text-3xl font-bold text-center text-primary mb-4" data-aos="fade-up" data-aos-duration="1000">Program Studi Tersedia
                 </h2>
-                <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Kami menyediakan berbagai program studi dengan
+                <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">Kami menyediakan berbagai program studi dengan
                     kurikulum terkini dan dosen berpengalaman</p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     @foreach ($prodi as $prodis)
-                    <div class="program-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center text-center">
+                    <div class="program-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1000">
                         <div class="program-icon w-16 h-16 rounded-2xl text-white flex items-center justify-center text-2xl mb-4"
                             aria-hidden="true">
                             <i class="fas {{$prodis->logo}}"></i>
                         </div>
                         <h3 class="text-xl font-bold text-primary mb-2">{{$prodis->name}}</h3>
                         <p class="text-gray-600 text-sm">{{$prodis->description}}</p>
-                        <a href="{{route('register')}}"
+                        <a href="{{route('prodiCourses', $prodis->slug)}}"
                             class="mt-4 text-primary text-sm font-medium hover:underline">Lihat
                             detail</a>
                     </div>
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="text-center mt-10">
-                    <a href="{{route('listProdi')}}" class="inline-flex items-center text-primary font-medium hover:text-secondary">
+                    <a href="{{route('listProdi')}}" class="inline-flex items-center text-primary font-medium hover:text-secondary" data-aos="fade-right">
                         Lihat semua program studi
                         <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
                     </a>
@@ -83,12 +83,12 @@
 
             <!-- Features Section -->
             <section id="features" class="mb-16" aria-labelledby="features-heading">
-                <h2 id="features-heading" class="text-3xl font-bold text-center text-primary mb-4">Fitur Unggulan</h2>
-                <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Platform e-learning kami dirancang khusus untuk
+                <h2 id="features-heading" class="text-3xl font-bold text-center text-primary mb-4" data-aos="fade-up" data-aos-duration="1000">Fitur Unggulan</h2>
+                <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Platform e-learning kami dirancang khusus untuk
                     memenuhi kebutuhan pembelajaran di lingkungan kampus</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="feature-card bg-white p-8 rounded-2xl shadow-md transition duration-300">
+                    <div class="feature-card bg-white p-8 rounded-2xl shadow-md transition duration-300" data-aos="fade-up" data-aos-duration="1000">
                         <div class="w-16 h-16 rounded-2xl bg-blue-100 text-primary flex items-center justify-center text-2xl mb-6"
                             aria-hidden="true">
                             <i class="fas fa-video"></i>
@@ -98,7 +98,7 @@
                             kolaborasi real-time.</p>
                     </div>
 
-                    <div class="feature-card bg-white p-8 rounded-2xl shadow-md transition duration-300">
+                    <div class="feature-card bg-white p-8 rounded-2xl shadow-md transition duration-300" data-aos="fade-up" data-aos-duration="1000">
                         <div class="w-16 h-16 rounded-2xl bg-blue-100 text-primary flex items-center justify-center text-2xl mb-6"
                             aria-hidden="true">
                             <i class="fas fa-tasks"></i>
@@ -108,7 +108,7 @@
                             terintegrasi.</p>
                     </div>
 
-                    <div class="feature-card bg-white p-8 rounded-2xl shadow-md transition duration-300">
+                    <div class="feature-card bg-white p-8 rounded-2xl shadow-md transition duration-300" data-aos="fade-up" data-aos-duration="1000">
                         <div class="w-16 h-16 rounded-2xl bg-blue-100 text-primary flex items-center justify-center text-2xl mb-6"
                             aria-hidden="true">
                             <i class="fas fa-chart-line"></i>
@@ -121,12 +121,12 @@
             </section>
 
             <!-- Testimonial Section -->
-            <section class="bg-white rounded-3xl p-8 md:p-10 shadow-md mb-16" aria-labelledby="testimonials-heading">
-                <h2 id="testimonials-heading" class="text-3xl font-bold text-center text-primary mb-12">Apa Kata Pengguna?
+            <section class="bg-white rounded-3xl p-8 md:p-10 shadow-md mb-16" aria-labelledby="testimonials-heading" data-aos="fade-up" data-aos-duration="1000">
+                <h2 id="testimonials-heading" class="text-3xl font-bold text-center text-primary mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Apa Kata Pengguna?
                 </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-                    <div class="flex flex-col sm:flex-row">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10" >
+                    <div class="flex flex-col sm:flex-row" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
                         <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold mr-6 flex-shrink-0 mb-4 sm:mb-0"
                             aria-hidden="true">
                             AD
@@ -139,7 +139,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row">
+                    <div class="flex flex-col sm:flex-row" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
                         <div class="w-16 h-16 rounded-full bg-secondary text-white flex items-center justify-center text-xl font-bold mr-6 flex-shrink-0 mb-4 sm:mb-0"
                             aria-hidden="true">
                             RS
@@ -155,7 +155,7 @@
             </section>
 
             <!-- CTA Section -->
-            <section id="demo"
+            <section id="demo" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1000"
                 class="bg-gradient-to-r hero-bg from-primary to-secondary rounded-3xl p-8 md:p-10 text-center text-white mb-16 relative overflow-hidden"
                 aria-labelledby="cta-heading">
                 <div class="absolute top-0 left-0 w-full h-full z-10 overflow-hidden">

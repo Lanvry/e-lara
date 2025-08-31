@@ -7,13 +7,17 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landingPage');
-Route::get('/prodi/list', [LandingController::class, 'listProdi'])->name('listProdi');
-Route::post('/prodi/list', [LandingController::class, 'searchlistProdi'])->name('searchlistProdi');
-Route::get('prodi/{slug}/courses', [LandingController::class, 'prodiCourses'])->name('prodiCourses');
+Route::get('/chat', function () {
+    return view('dashboard.chat');
+})->name('chat');
+Route::get('/programs/list', [LandingController::class, 'listProdi'])->name('listProdi');
+Route::post('/programs/list', [LandingController::class, 'searchlistProdi'])->name('searchlistProdi');
+Route::get('programs/{slug}/courses', [LandingController::class, 'prodiCourses'])->name('prodiCourses');
 Route::get("/auth/login", function () {
     return view('auth.loginPage');
 })->name(('login'));
@@ -55,4 +59,6 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::post('/auth/verifyOTP', [AuthController::class, 'verifyOTP'])->name('verifyOTP');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // routes/web.php atau routes/api.php
+    Route::post('/chatbot', [ChatbotController::class, 'generate']);
 });

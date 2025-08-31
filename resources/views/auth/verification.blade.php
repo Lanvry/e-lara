@@ -18,20 +18,20 @@
                 <span class="text-3xl font-bold text-primary">{{env('APP_NAME')}}</span></span>
             </div>
 
-            <!-- Progress bar -->
+            {{-- <!-- Progress bar -->
             <div class="w-full bg-gray-200 rounded-full h-2.5 mb-10">
                 <div class="bg-primary h-2.5 rounded-full" style="width: 66%"></div>
-            </div>
+            </div> --}}
 
             <!-- Form title -->
             <h1 class="text-3xl font-bold text-gray-800 mb-2">Verifikasi Email Anda</h1>
             <p class="text-gray-600 mb-6">Kami telah mengirimkan kode OTP ke <span
                     class="font-semibold text-primary">{{$email}}</span></p>
 
-            <!-- Countdown timer bar -->
+            {{-- <!-- Countdown timer bar -->
             <div class="w-full bg-gray-200 rounded-full h-1 mb-6">
                 <div class="countdown-bar h-1 rounded-full"></div>
-            </div>
+            </div> --}}
 
             <!-- Form OTP -->
             <form class="space-y-6" id="otp-form">
@@ -46,10 +46,10 @@
                     <input type="text" maxlength="1" class="otp-input" pattern="[0-9]*" inputmode="numeric" required>
                 </div>
 
-                <!-- Timer and resend -->
+                {{-- <!-- Timer and resend -->
                 <div class="text-center mb-8">
                     <p class="text-gray-600" id="timer">Kirim ulang kode dalam <span id="countdown">01:00</span></p>
-                </div>
+                </div> --}}
 
                 <!-- Submit button -->
                 <button type="submit"

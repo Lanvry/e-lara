@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 .hero-bg {
     background: linear-gradient(120deg, rgba(37, 99, 235, 0.9) 0%, rgba(30, 64, 175, 0.85) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="white" opacity="0.1" width="10" height="10"/></svg>');
     background-size: cover;
@@ -82,7 +86,7 @@
 
 /* Program studi icon colors */
 .program-icon {
-    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    background: linear-gradient(135deg, #2564eb83 0%, #1e40af8f 100%);
 }
 
 /* Variabel CSS */
@@ -679,6 +683,26 @@ ul {
     text-decoration: none;
     list-style: none;
 }
+
+.navbar{
+    background-color: rgba(218, 218, 218, 0.233);
+    padding: 10px 20px;
+    width: 90%;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 50px;
+}
+
+#main-content{
+    margin-top: 100px;
+}
+
+
 
 /* Responsive Design */
 @media (min-width: 640px) {

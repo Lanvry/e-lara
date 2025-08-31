@@ -2,15 +2,23 @@
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
+        const overlayside = document.getElementById('overlayside');
 
         menuToggle.addEventListener('click', function () {
             sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
+            overlayside.classList.toggle('active');
         });
 
         overlay.addEventListener('click', function () {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
+            notificationPanel.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            AIPanel.classList.remove('active');
+        });
+        overlayside.addEventListener('click', function () {
+            sidebar.classList.remove('active');
+            overlayside.classList.remove('active');
             notificationPanel.classList.remove('active');
         });
 
@@ -18,15 +26,32 @@
         const notificationBtn = document.getElementById('notificationBtn');
         const notificationPanel = document.getElementById('notificationPanel');
         const closeNotificationPanel = document.getElementById('closeNotificationPanel');
+        const AIBtn = document.getElementById('AIBtn');
+        const AIPanel = document.getElementById('AIPanel');
+        const closeAIPanel = document.getElementById('closeAIPanel');
+
+        AIBtn.addEventListener('click', function () {
+            AIPanel.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = AIPanel.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        closeAIPanel.addEventListener('click', function () {
+            AIPanel.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = AIPanel.classList.contains('active') ? 'hidden' : 'auto';
+        });
 
         notificationBtn.addEventListener('click', function () {
             notificationPanel.classList.toggle('active');
             overlay.classList.toggle('active');
+            document.body.style.overflow = notificationPanel.classList.contains('active') ? 'hidden' : 'auto';
         });
 
         closeNotificationPanel.addEventListener('click', function () {
             notificationPanel.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = notificationPanel.classList.contains('active') ? 'hidden' : 'auto';
         });
 
         // Active menu items
@@ -40,7 +65,7 @@
                 // Close sidebar on mobile after selection
                 if (window.innerWidth < 1024) {
                     sidebar.classList.remove('active');
-                    overlay.classList.remove('active');
+                    overlayside.classList.remove('active');
                 }
             });
         });
