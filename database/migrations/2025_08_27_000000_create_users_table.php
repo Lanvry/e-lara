@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('NRP', 10)->unique();
-            $table->foreignId('prodi_id')->constrained('prodis')->onDelete('cascade'); 
+            $table->foreignId('prodi_id')->nullable()->constrained('prodis')->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->default('Mahasiswa');
             $table->rememberToken();
             $table->timestamps();
         });

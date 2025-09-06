@@ -24,12 +24,18 @@ class User extends Authenticatable
         'NRP',
         'prodi_id',
         'password',
+        'role',
     ];
 
-// Satu user hanya punya 1 prodi
+    // Satu user hanya punya 1 prodi
     public function prodi()
     {
         return $this->belongsTo(Prodi::class);
+    }
+
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class);
     }
 
     public function courses()

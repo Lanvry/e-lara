@@ -196,26 +196,39 @@ async function sendMessage() {
 
     // showTypingIndicator();
     chatContainer.scrollTop = chatContainer.scrollHeight;
+    const jurusanList = window.APP_CONFIG.jurusan.join(", ");
+    const kursusList = window.APP_CONFIG.kursus.join(", ");
+
+    const systemPrompt = `Kamu adalah asisten e-learning kampus dengan nama E-LARA (E-Learning Adaptive Resource with AI). Fokus hanya menjawab pertanyaan seputar jurusan dan kursus. Jurusan: ${jurusanList}. Kursus: ${kursusList}., dan bantu ketika masih masuk ke topic jika, sudah keluar dari topic maka berikan penolakan dengan halus, tolong jangan berikan jawaban soal, atau code atau apapun kamu hanya memberikan jawaban dan penjelasannya saja, jadi jangan langsung berikan jawaban`;
 
     try {
         // Get the entire conversation history for context
-        const conversationHistory = loadMessages().map(msg => {
-            return {
-                role: msg.role === 'user' ? 'user' : 'model',
-                parts: [{ text: msg.content }]
-            };
-        });
+        const conversationHistory = [
+            {
+                role: 'user',
+                parts: [{
+                    text: systemPrompt
+                }]
+            },
+            ...loadMessages().map(msg => {
+                return {
+                    role: msg.role === 'user' ? 'user' : 'model',
+                    parts: [{ text: msg.content }]
+                };
+            })
+        ];
+
 
         conversationHistory.push({
             role: 'user',
             parts: [{ text: message }]
         });
 
-        const response = await fetch("/chatbot", {
+        const response = await fetch(window.APP_CONFIG.chatbot_url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
+                "X-CSRF-TOKEN": window.APP_CONFIG.csrf_token
             },
             body: JSON.stringify({ contents: conversationHistory })
         });

@@ -180,11 +180,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
                 <div>
                     <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg mr-3"
-                            aria-hidden="true">
-                            EC
-                        </div>
-                        <span class="text-xl font-bold text-primary">{{env('APP_NAME')}}</span></span>
+                        <img class="logo" src="{{asset('image/e-lara.png')}}" alt="">
                     </div>
                     <p class="text-gray-600">Platform e-learning terdepan untuk lingkungan kampus di Indonesia.</p>
                 </div>

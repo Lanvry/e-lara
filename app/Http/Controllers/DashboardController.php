@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
@@ -11,7 +14,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        if(Auth::user()->email_verified_at != null){
+            return view('dashboard.index');
+        }
+        Session::put('akses', 'register');
+        return redirect()->route("otp");
     }
 
     /**

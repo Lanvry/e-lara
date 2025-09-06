@@ -6,8 +6,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 
@@ -46,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
         } else {
             return redirect('/dashboard'); // kalau udah verifikasi, langsung ke dashboard
         }
-    });
+    })->name('otp');
     Route::get('/auth/verification', function () {
         return view('auth.verification', [
             'username' => Auth::user()->name,
@@ -61,4 +65,25 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // routes/web.php atau routes/api.php
     Route::post('/chatbot', [ChatbotController::class, 'generate']);
+    Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
+    Route::get('/dashboard/courses/list', [CoursesController::class, 'list'])->name('courses.list');
+    Route::get('/dashboard/courses/{slug}', [CoursesController::class, 'show'])->name('courses.slug');
+    Route::resource('/dashboard/courses', CoursesController::class)->except('show');
+
+    Route::post('/dashboard/kelas/enroll/{course}', [KelasController::class, 'enroll'])->name('kelas.enroll');
+
+
+
+    Route::get('/thumbnails/{filename}', function ($filename) {
+        // Dapatkan path lengkap file di storage/public/thumbnails
+        $path = Storage::disk('public')->path('thumbnails/' . $filename);
+
+        // Cek apakah file ada
+        if (!file_exists($path)) {
+            abort(404);
+        }
+
+        // Tampilkan file
+        return response()->file($path);
+    });
 });

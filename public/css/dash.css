@@ -33,6 +33,10 @@
     padding: 0;
 }
 
+.logo {
+    width: 140px;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--gray-100);
@@ -147,6 +151,7 @@ body {
     margin-right: 0.75rem;
 }
 
+
 .user-details {
     flex: 1;
 }
@@ -193,8 +198,9 @@ body {
 
 /* Header */
 .header {
-    background: var(--white);
-    box-shadow: var(--shadow);
+    /* background: rgba(255, 255, 255, 0.404); */
+    /* backdrop-filter: blur(10px); */
+    box-shadow: 0px 15px 15px var(--gray-100);
     padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
@@ -303,8 +309,9 @@ body {
 
 /* Content Area */
 .content {
-    flex: 1;
+    /* flex: 1; */
     padding: 1.5rem;
+    height: 88dvh !important;
     overflow-y: auto;
 }
 
@@ -316,6 +323,10 @@ body {
     margin-bottom: 2rem;
     position: relative;
     overflow: hidden;
+}
+
+.margin-10 {
+    margin-bottom: 15px;
 }
 
 .welcome-banner h1 {
@@ -443,6 +454,19 @@ body {
     gap: 1.5rem;
 }
 
+.container-courses {
+    width: 100%;
+    position: relative;
+}
+
+.container-courses .course-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.062);
+
+}
+
 .course-card {
     border: 1px solid var(--gray-200);
     border-radius: var(--rounded-lg);
@@ -480,13 +504,42 @@ body {
 
 .course-body {
     padding: 1.25rem;
+    background-color: white;
 }
 
 .course-title {
-    font-size: 1.125rem;
+    font-size: 1.325rem !important;
     font-weight: 600;
     margin-bottom: 0.5rem;
     color: var(--gray-800);
+}
+
+.btn-add-course {
+    background-color: white;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #007bff;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-add-course:hover {
+    background-color: #d5e9ff;
+    transform: translateY(-1px);
+}
+
+.btn-add-course i {
+    font-size: 14px;
 }
 
 .course-instructor {
@@ -495,6 +548,10 @@ body {
     margin-bottom: 1rem;
     color: var(--gray-500);
     font-size: 0.875rem;
+}
+
+.course-instructor i {
+    margin-right: 5px;
 }
 
 .course-instructor img {
@@ -781,6 +838,289 @@ h3 {
     font-size: 1rem !important;
 }
 
+.add-courses {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    flex-direction: column
+}
+
+.add-courses p {
+    color: grey;
+}
+
+.create-courses {
+    position: fixed !important;
+    width: 600px;
+    height: 70%;
+    top: 50%;
+    border-radius: 20px;
+    display: none;
+    left: 50%;
+    position: relative;
+    padding: 20px 30px;
+    overflow-y: auto;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    animation: openCourses 0.3s;
+    background-color: rgba(255, 255, 255, 0.61);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.185);
+}
+
+.create-courses-judul {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.create-courses-close {
+    background-color: transparent;
+    border: 0;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.course-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 120px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 4px;
+    padding: 0;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu a,
+.dropdown-menu .dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    width: 100%;
+    text-align: left;
+    border: none;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.course-actions.show .dropdown-menu {
+    display: block;
+}
+
+
+@keyframes openCourses {
+    0% {
+        filter: blur(10px);
+    }
+
+    100% {
+        filter: blur(0px);
+    }
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    /* Biru */
+    color: white;
+    /* Warna teks */
+    border: none;
+    /* Hilangkan border default */
+    padding: 10px 20px;
+    /* Ruang dalam tombol */
+    border-radius: 5px;
+    /* Sudut membulat */
+    cursor: pointer;
+    /* Kursor berubah saat diarahkan */
+    font-size: 16px;
+    /* Ukuran teks */
+    transition: background-color 0.3s ease;
+    /* Animasi saat hover */
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    /* Biru lebih gelap saat hover */
+}
+
+nav.breadcrumb {
+    padding: 0.8em 1em;
+    border: 1px solid hsl(0deg 0% 90%);
+    border-radius: 4px;
+    background: hsl(300deg 14% 97%);
+}
+
+nav.breadcrumb ol {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+nav.breadcrumb li {
+    display: inline;
+}
+
+nav.breadcrumb li+li::before {
+    display: inline-block;
+    margin: 0 0.25em;
+    transform: rotate(15deg);
+    border-right: 0.1em solid currentcolor;
+    height: 0.8em;
+    content: "";
+}
+
+nav.breadcrumb [aria-current="page"] {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+.bg {
+    background-image: url("../image/bg.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 98%;
+    top: 0;
+    left: 0;
+    opacity: 30%;
+    /* jangan 30%, nanti warnanya pudar total */
+    /* Lubang di tengah */
+    -webkit-mask-image: radial-gradient(circle at center, transparent 150px, black 180px);
+    mask-image: radial-gradient(circle at center, transparent 150px, black 180px);
+}
+
+.bg1 {
+    background-image: url("../image/bg.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 98%;
+    top: 0;
+    left: 0;
+    opacity: 30%;
+    /* jangan 30%, nanti warnanya pudar total */
+    /* Lubang di tengah */
+    -webkit-mask-image: radial-gradient(circle at center, transparent 50px, black 80px);
+    mask-image: radial-gradient(circle at center, transparent 50px, black 80px);
+}
+
+hr {
+    color: #fff;
+}
+
+.card {
+    position: relative;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    height: auto;
+    background-color: white;
+    /* box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.075); */
+    border-radius: 10px;
+}
+
+.card-content:hover{
+    background-color: rgb(221, 221, 221);
+
+}
+
+.card .course-title {
+    font-size: 2rem !important;
+    font-weight: bold;
+}
+
+.card .course-instructor {
+    position: relative;
+    top: -10px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.course-avatar {
+    font-size: 28px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 0.75rem;
+}
+
+.course-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.course-content p {
+    font-size: 14px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    top: -10px;
+
+}
+
+.course-content h3 {
+    white-space: nowrap;
+    /* teks jadi 1 baris */
+    overflow: hidden;
+    /* sembunyikan sisa teks */
+    text-overflow: ellipsis;
+    /* kasih "..." di akhir */
+    max-width: 400px;
+}
+
+.course-status {
+    position: absolute;
+    transform: translate(-0%, -50%);
+    top: 50%;
+    color: rgb(0, 197, 0);
+    font-size: 14px;
+    font-weight: 600;
+    right: 30px;
+}
+
+
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .two-column {
@@ -811,11 +1151,29 @@ h3 {
         flex-wrap: wrap;
     }
 
+    .create-courses {
+        width: 100%;
+        height: auto;
+        transform: translate(0%, -50%);
+        top: 50%;
+        left: 0%;
+    }
+
+    .course-status {
+        top: 55%;
+    }
+
     .search-container {
         max-width: 100%;
     }
 
-    .profile-btn{
+    .bg {
+        /* Lubang di tengah */
+        -webkit-mask-image: radial-gradient(circle at center, transparent 70px, black 100px);
+        mask-image: radial-gradient(circle at center, transparent 70px, black 100px);
+    }
+
+    .profile-btn {
         display: none;
     }
 
@@ -827,12 +1185,27 @@ h3 {
         grid-template-columns: 1fr;
     }
 
+    .course-content h3 {
+        white-space: nowrap;
+        /* teks jadi 1 baris */
+        overflow: hidden;
+        /* sembunyikan sisa teks */
+        text-overflow: ellipsis;
+        /* kasih "..." di akhir */
+        max-width: 200px;
+    }
+
+    .course-avatar {
+        margin-right: 0px;
+    }
+
     .welcome-banner {
         padding: 1.5rem;
     }
 
     .artifical-intelegence-panel {
         width: 100%;
+        right: -900px;
     }
 
     .banner-icon {
@@ -853,8 +1226,8 @@ h3 {
         gap: 0rem !important;
     }
 
-    .search-container{
-        margin : 0px 10px;
+    .search-container {
+        margin: 0px 10px;
     }
 
     .quick-actions {

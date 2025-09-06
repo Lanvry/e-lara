@@ -1,26 +1,29 @@
 <nav class="navbar flex justify-between items-center py-6 mb-8" data-aos="fade-in" aria-label="Main navigation">
     <div class="flex items-center">
-        <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl mr-3" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="0"
-            aria-hidden="true">
-            EC
-        </div>
-        <span class="text-2xl font-bold text-primary" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="300">{{env('APP_NAME')}}</span>
+        <img class="logo" src="{{asset('image/e-lara.png')}}" alt="">
+
     </div>
 
     <!-- Desktop Menu -->
     <div class="hidden lg:flex space-x-10">
-        <a href="{{url('./')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200" class="text-primary font-medium hover:text-secondary transition">Beranda</a>
-        <a href="{{url('./#features')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100" class="text-gray-600 font-medium hover:text-primary transition">Fitur</a>
-        <a href="{{url('./#programs')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="0" class="text-gray-600 font-medium hover:text-primary transition">Program</a>
-        <a href="{{url('./#about')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100" class="text-gray-600 font-medium hover:text-primary transition">Tentang</a>
-        <a href="{{url('./#contact')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200" class="text-gray-600 font-medium hover:text-primary transition">Kontak</a>
+        <a href="{{url('./')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200"
+            class="text-primary font-medium hover:text-secondary transition">Beranda</a>
+        <a href="{{url('./#features')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"
+            class="text-gray-600 font-medium hover:text-primary transition">Fitur</a>
+        <a href="{{url('./#programs')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="0"
+            class="text-gray-600 font-medium hover:text-primary transition">Program</a>
+        <a href="{{url('./#about')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"
+            class="text-gray-600 font-medium hover:text-primary transition">Tentang</a>
+        <a href="{{url('./#contact')}}" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200"
+            class="text-gray-600 font-medium hover:text-primary transition">Kontak</a>
     </div>
 
     <div class="hidden lg:flex space-x-4">
-        <a href="{{route('login')}}"
-            class="px-6 py-2 text-primary font-medium hover:bg-blue-50 rounded-full transition" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="400">Masuk</a>
+        <a href="{{route('login')}}" class="px-6 py-2 text-primary font-medium hover:bg-blue-50 rounded-full transition"
+            data-aos="fade-in" data-aos-duration="1000" data-aos-delay="400">Masuk</a>
         <a href="{{route('register')}}"
-            class="px-6 py-2 bg-primary text-white font-medium rounded-full hover:bg-secondary transition" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">Daftar</a>
+            class="px-6 py-2 bg-primary text-white font-medium rounded-full hover:bg-secondary transition"
+            data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">Daftar</a>
     </div>
 
     <!-- Mobile menu button -->

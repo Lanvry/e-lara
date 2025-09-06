@@ -9,13 +9,17 @@ class ChatbotController extends Controller
 {
     public function generate(Request $request)
     {
-        $apiKey = env('API_KEY');
+        $apiKey = "AIzaSyDpGnGsdcLi7-zKjgW-k4v89dqpHKYH8FM";
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={$apiKey}";
 
         // Ambil langsung contents dari frontend
         $contents = $request->input('contents', []);
 
-        $response = Http::post($url, [
+        $response = Http::withOptions([
+            'verify' => false, // 🚨 jangan dipakai di production
+        ])->withHeaders([
+            'Content-Type' => 'application/json',
+        ])->post($url, [
             "contents" => $contents,
             "generationConfig" => [
                 "temperature" => 0.7,
@@ -30,6 +34,8 @@ class ChatbotController extends Controller
                 ]
             ]
         ]);
+
+
 
         if ($response->failed()) {
             return response()->json([

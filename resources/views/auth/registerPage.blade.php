@@ -7,26 +7,26 @@
         <link rel="stylesheet" href="{{asset('css/auth.css')}}">
     @endpush
     <!-- Bagian kiri: Form login -->
-    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white" data-aos="fade-right"
+        data-aos-duration="1000" data-aos-delay="200">
         <div class="w-full max-w-md">
             <!-- Logo -->
             <div class="flex items-center justify-center mb-10">
-                <div
-                    class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl mr-3">
-                    {{ collect(explode(' ', env('APP_NAME')))->map(fn($word) => strtoupper(substr($word, 0, 1)))->implode('') }}
-                </div>
-                <span class="text-3xl font-bold text-primary">{{env('APP_NAME')}}</span>
+                <img class="logo" src="{{asset('image/e-lara.png')}}" alt="">
             </div>
 
             <!-- Form title -->
-            <h1 class="text-3xl font-bold text-gray-800 mb-2" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="0">Buat ke Akun Anda</h1>
-            <p class="text-gray-600 mb-10" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">Selamat datang! Silakan Buat untuk melanjutkan</p>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2" data-aos="fade-right" data-aos-duration="1000"
+                data-aos-delay="0">Buat ke Akun Anda</h1>
+            <p class="text-gray-600 mb-10" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">Selamat
+                datang! Silakan Buat untuk melanjutkan</p>
 
             <!-- Form login -->
             <form class="space-y-6" method="POST" action="{{route('registerPost')}}">
                 @csrf
                 <!-- Nama Lengkap input -->
-                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right"
+                    data-aos-duration="1000" data-aos-delay="200">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
                     <div class="flex items-center">
                         <i class="fas fa-user text-gray-400 mr-3"></i>
@@ -36,7 +36,8 @@
                 </div>
 
                 <!-- NRP input -->
-                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right"
+                    data-aos-duration="1000" data-aos-delay="300">
                     <label class="block text-sm font-medium text-gray-700 mb-2">NRP</label>
                     <div class="flex items-center">
                         <i class="fas fa-clipboard-list text-gray-400 mr-3"></i>
@@ -46,7 +47,8 @@
                 </div>
 
                 <!-- Prodi input -->
-                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
+                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right"
+                    data-aos-duration="1000" data-aos-delay="400">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Prodi</label>
                     <div class="flex items-center">
                         <i class="fas fa-graduation-cap text-gray-400 mr-3"></i>
@@ -60,7 +62,8 @@
                 </div>
 
                 <!-- Email input -->
-                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right"
+                    data-aos-duration="1000" data-aos-delay="300">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                     <div class="flex items-center">
                         <i class="fas fa-envelope text-gray-400 mr-3"></i>
@@ -70,7 +73,8 @@
                 </div>
 
                 <!-- Password input -->
-                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+                <div class="input-focused bg-gray-50 rounded-xl p-4 border border-gray-200 transition" data-aos="fade-right"
+                    data-aos-duration="1000" data-aos-delay="200">
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-sm font-medium text-gray-700">Kata Sandi</label>
                     </div>
@@ -104,7 +108,8 @@
     </div>
 
     <!-- Bagian kanan: Ilustrasi -->
-    <div class="hidden lg:flex lg:w-1/2 items-center justify-center p-12 text-white relative overflow-hidden" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+    <div class="hidden lg:flex lg:w-1/2 items-center justify-center p-12 text-white relative overflow-hidden"
+        data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
         <div class="ambient-circle circle-1"></div>
         <div class="ambient-circle circle-2"></div>
 

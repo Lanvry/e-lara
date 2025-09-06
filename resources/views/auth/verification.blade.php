@@ -11,11 +11,7 @@
         <div class="w-full max-w-md">
             <!-- Logo -->
             <div class="flex items-center justify-center mb-10">
-                <div
-                    class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl mr-3">
-                    E
-                </div>
-                <span class="text-3xl font-bold text-primary">{{env('APP_NAME')}}</span></span>
+                <img class="logo" src="{{asset('image/e-lara.png')}}" alt="">
             </div>
 
             {{-- <!-- Progress bar -->
@@ -117,7 +113,7 @@
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 // Auto move to next input
-               
+
                 const inputs = document.querySelectorAll('.otp-input');
 
                 inputs.forEach((input, index) => {
@@ -130,7 +126,7 @@
                         // Auto-submit when all inputs are filled
                         const allFilled = Array.from(inputs).every(input => input.value.length === 1);
                         if (allFilled) {
-                            document.getElementById('otp-form').dispatchEvent(new Event('submit'));
+                            document.getElementById('otp-form').dispatchEvent(new Event('otp-submit'));
                         }
                     });
 
@@ -151,7 +147,7 @@
                 let timeLeft = 60;
                 const timerElement = document.getElementById('countdown');
                 const resendLink = document.getElementById('resend-link');
-                 if (sessionStorage.getItem('resendClicked') == 'true') {
+                if (sessionStorage.getItem('resendClicked') == 'true') {
                     resendLink.style.display = "none";
                 }
                 const countdown = setInterval(function () {
@@ -210,11 +206,11 @@
                     const notification = document.createElement('div');
                     notification.className = 'fixed top-4 right-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded shadow-lg z-50';
                     notification.innerHTML = `
-                                    <div class="flex items-center">
-                                        <i class="fas fa-check-circle mr-2"></i>
-                                        <span>Kode OTP baru telah dikirim ke email Anda</span>
-                                    </div>
-                                `;
+                                            <div class="flex items-center">
+                                                <i class="fas fa-check-circle mr-2"></i>
+                                                <span>Kode OTP baru telah dikirim ke email Anda</span>
+                                            </div>
+                                        `;
                     document.body.appendChild(notification);
 
                     // Remove notification after 3 seconds
@@ -237,11 +233,11 @@
                         const errorDiv = document.createElement('div');
                         errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6';
                         errorDiv.innerHTML = `
-                                        <div class="flex items-center">
-                                            <i class="fas fa-exclamation-circle mr-2"></i>
-                                            <span>Harap masukkan semua digit kode OTP</span>
-                                        </div>
-                                    `;
+                                                <div class="flex items-center">
+                                                    <i class="fas fa-exclamation-circle mr-2"></i>
+                                                    <span>Harap masukkan semua digit kode OTP</span>
+                                                </div>
+                                            `;
 
                         // Remove any existing error
                         const existingError = otpForm.querySelector('.bg-red-100');
@@ -283,11 +279,11 @@
                                     const errorDiv = document.createElement('div');
                                     errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6';
                                     errorDiv.innerHTML = `
-                                            <div class="flex items-center">
-                                                <i class="fas fa-exclamation-circle mr-2"></i>
-                                                <span>Kode OTP tidak valid. Silakan coba lagi.</span>
-                                            </div>
-                                        `;
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-exclamation-circle mr-2"></i>
+                                                        <span>Kode OTP tidak valid. Silakan coba lagi.</span>
+                                                    </div>
+                                                `;
 
                                     // Remove any existing error
                                     const existingError = otpForm.querySelector('.bg-red-100');
@@ -315,11 +311,11 @@
                                 const errorDiv = document.createElement('div');
                                 errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6';
                                 errorDiv.innerHTML = `
-                                            <div class="flex items-center">
-                                                <i class="fas fa-exclamation-circle mr-2"></i>
-                                                <span>Terjadi kesalahan tidak terduga</span>
-                                            </div>
-                                        `;
+                                                    <div class="flex items-center">
+                                                        <i class="fas fa-exclamation-circle mr-2"></i>
+                                                        <span>Terjadi kesalahan tidak terduga</span>
+                                                    </div>
+                                                `;
 
                                 // Remove any existing error
                                 const existingError = otpForm.querySelector('.bg-red-100');

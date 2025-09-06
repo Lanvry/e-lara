@@ -16,17 +16,39 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @forelse ($courses as $course)
-                    <div class="program-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center text-center">
-                        <div class="program-icon w-16 h-16 rounded-2xl text-white flex items-center justify-center text-2xl mb-4"
-                            aria-hidden="true">
-                            <i class="fas {{$course->logo}}"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary mb-2">{{$course->name}}</h3>
-                        <p class="text-gray-600 text-sm">{{$course->description}}</p>
-                        <a href="{{route('register')}}"
-                            class="mt-4 text-primary text-sm font-medium hover:underline">Lihat
-                            detail</a>
+                    <div class="course-card">
+                    <div class="course-header">
+                        @php
+                            $thumbnail = $course->thumbnail;
+                            $isImage = preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $thumbnail);
+                        @endphp
+
+                        @if ($isImage)
+                            <img src="{{ asset($thumbnail) }}" alt="{{ $course->title }}"
+                                class="course-image">
+                        @else
+                            <img src="data:image/svg+xml;utf8,
+                                <svg xmlns='http://www.w3.org/2000/svg' width='300' height='120' viewBox='0 0 300 120'>
+                                    <rect width='300' height='120' fill='{{ urlencode($thumbnail) }}'/>
+                                    <text x='150' y='70' font-family='Arial' font-weight='bold' font-size='20' fill='white' text-anchor='middle'>
+                                        {{ $course->title }}
+                                    </text>
+                                </svg>" alt="{{ $course->title }}" class="course-image">
+                                <div class="bg1"></div>
+                        @endif
+                        <div class="course-category">{{collect(explode(' ', $course->prodi->name))->map(fn($word) => strtoupper(substr($word, 0, 1)))->implode('');}}</div>
                     </div>
+
+                    <div class="course-body">
+                        <h3 class="course-title">{{ $course->title }}</h3>
+
+                        <div class="course-instructor">
+                            <i class="fas fa-user"></i> {{ $course->instructor->name }}
+                        </div>
+                            
+                             <a href="{{ route('courses.slug', $course->slug) }}" class="course-button">Lihat Kursus</a>
+                    </div>
+                </div>
                 @empty
                     <div class="col-span-4 text-center text-gray-500 py-12">
                         Tidak ada program studi yang tersedia saat ini.

@@ -42,17 +42,20 @@ class AuthController extends Controller
         // Ambil user
         $user = User::where('email', $credentials['email'])->first();
 
-        // Cek verifikasi email
-        if ($user && is_null($user->email_verified_at)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Email Anda belum diverifikasi. Silakan cek email untuk verifikasi OTP.'
-            ], 403); // 403 Forbidden
-        }
 
         // Cek login (email + password)
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            // Cek verifikasi email
+            if ($user && is_null($user->email_verified_at)) {
+                Session::put("akses", "register");
+                return response()->json([
+                    'success' => false,
+                    'href' => './send-otp',
+                    'message' => 'Email Anda belum diverifikasi. Silakan cek email untuk verifikasi OTP.'
+                ], 403); // 403 Forbidden
+            }
 
             return response()->json([
                 'success' => true,
@@ -166,8 +169,13 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Request $request)
     {
-        //
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route("login"); // arahkan ke halaman login
     }
 }
