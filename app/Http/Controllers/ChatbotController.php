@@ -9,7 +9,7 @@ class ChatbotController extends Controller
 {
     public function generate(Request $request)
     {
-        $apiKey = "AIzaSyDpGnGsdcLi7-zKjgW-k4v89dqpHKYH8FM";
+        $apiKey = "";
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={$apiKey}";
 
         // Ambil langsung contents dari frontend
