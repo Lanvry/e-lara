@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\Kelas;
 use App\Models\Prodi;
 use App\Models\Course;
@@ -24,6 +25,12 @@ class CoursesController extends Controller
             return view('dashboard.courses.index', [
                 'prodis' => Prodi::all(),
                 'courses' => Course::all(),
+                'breadcrumbs' => $breadcrumbs,
+            ]);
+        } else if (Auth::user()->role == "Dosen") {
+            return view('dashboard.courses.index', [
+                'prodis' => Prodi::all(),
+                'courses' => Course::where("prodi_id", Auth::user()->prodi_id)->get(),
                 'breadcrumbs' => $breadcrumbs,
             ]);
         } else {
@@ -75,8 +82,8 @@ class CoursesController extends Controller
                 // Hapus validasi file khusus
                 'thumbnail' => 'nullable',
             ]);
-           
-            
+
+
             $course = new Course();
             $course->title = $validated['title'];
             $course->prodi_id = $validated['prodi'];
@@ -256,13 +263,14 @@ class CoursesController extends Controller
     public function show(String $slug)
     {
         $course = Course::where('slug', $slug)->firstOrFail();
+        $task = Task::where('courses_id', $course->id)->get();
         $breadcrumbs = [
             ['url' => route('dashboard'), 'label' => 'Dashboard'],
             ['url' => route('courses.index'), 'label' => 'Course'],
             ['url' => '#', 'label' => $course->title]
         ];
 
-        return view('dashboard.courses.show', compact('course', 'breadcrumbs'));
+        return view('dashboard.courses.show', compact('course', 'breadcrumbs', 'task'));
     }
 
 
@@ -271,26 +279,30 @@ class CoursesController extends Controller
      */
     public function edit(Course $course)
     {
-        $breadcrumbs = [
-            ['url' => route('dashboard'), 'label' => 'Dashboard'],
-            ['url' => route('courses.index'), 'label' => 'Course'],
-            ['url' => '', 'label' => 'Edit'] // Tambahkan breadcrumb aktif
-        ];
+        if (Auth::user()->role != "Mahasiswa") {
+            $breadcrumbs = [
+                ['url' => route('dashboard'), 'label' => 'Dashboard'],
+                ['url' => route('courses.index'), 'label' => 'Course'],
+                ['url' => '', 'label' => 'Edit'] // Tambahkan breadcrumb aktif
+            ];
 
-        if (Auth::user()->role != "Mahasiswa" && Auth::user()->role != "Dosen") {
-            return view('dashboard.courses.edit', [
-                'data' => $course, // langsung pakai
-                'prodis' => Prodi::all(),
-                'courses' => Course::all(),
-                'breadcrumbs' => $breadcrumbs
-            ]);
+            if (Auth::user()->role != "Mahasiswa" && Auth::user()->role != "Dosen") {
+                return view('dashboard.courses.edit', [
+                    'data' => $course, // langsung pakai
+                    'prodis' => Prodi::all(),
+                    'courses' => Course::all(),
+                    'breadcrumbs' => $breadcrumbs
+                ]);
+            } else {
+                return view('dashboard.courses.edit', [
+                    'data' => $course,
+                    'prodis' => Prodi::all(),
+                    'courses' => Course::where("prodi_id", Auth::user()->prodi_id)->get(),
+                    'breadcrumbs' => $breadcrumbs
+                ]);
+            }
         } else {
-            return view('dashboard.courses.edit', [
-                'data' => $course,
-                'prodis' => Prodi::all(),
-                'courses' => Course::where("prodi_id", Auth::user()->prodi_id)->get(),
-                'breadcrumbs' => $breadcrumbs
-            ]);
+            return redirect()->back()->with('error', 'Mohon Maaf Anda Tidak Dapat Izin Mengakses Halaman Ini');
         }
     }
 

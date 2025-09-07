@@ -38,9 +38,19 @@ class User extends Authenticatable
         return $this->hasMany(Kelas::class);
     }
 
+    public function taskcomplate()
+    {
+        return $this->hasMany(TaskComplete::class);
+    }
+
     public function courses()
     {
         return $this->hasMany(Course::class, 'instructor_id');
+    }
+
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
     }
     /**
      * The attributes that should be hidden for serialization.

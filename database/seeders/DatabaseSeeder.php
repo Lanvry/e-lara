@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => "PENS",
             'email' => "pens@pens.ac.id",
-            'NRP' => "3120000000",
+            'NRP' => "3130000000",
             'password' => bcrypt("pensjoss"),
             'role' => "Dosen",
             'prodi_id' => 1,

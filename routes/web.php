@@ -14,6 +14,8 @@ use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MateriController;
+use App\Http\Controllers\TaskController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landingPage');
 Route::get('/chat', function () {
@@ -69,6 +71,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/courses/list', [CoursesController::class, 'list'])->name('courses.list');
     Route::get('/dashboard/courses/{slug}', [CoursesController::class, 'show'])->name('courses.slug');
     Route::resource('/dashboard/courses', CoursesController::class)->except('show');
+    Route::get('/dashboard/courses/{slug}/task/create', [TaskController::class, 'create'])->name('create.task');
+    Route::post('/dashboard/courses/{slug}/task/create', [TaskController::class, 'store'])->name('store.task');
+    Route::get('/dashboard/courses/{slug}/materi/create', [MateriController::class, 'create'])->name('create.materi');
+    Route::post('/dashboard/courses/{slug}/materi/create', [MateriController::class, 'store'])->name('store.materi');
+    Route::get('/dashboard/courses/{slug}/task/{task}/edit', [TaskController::class, 'edit'])->name('edit.task');
+    Route::get('/dashboard/courses/{slug}/materi/{task}/edit', [MateriController::class, 'edit'])->name('edit.materi');
+    Route::put('/dashboard/courses/{slug}/task/{task}', [TaskController::class, 'update'])->name('update.task');
+    Route::put('/dashboard/courses/{slug}/materi/{task}', [MateriController::class, 'update'])->name('update.materi');
+    Route::get('/dashboard/courses/{slug}/{task}', [TaskController::class, 'show'])->name('show.task');
+    Route::post('/dashboard/courses/{slug}/task/{task}/complete', [MateriController::class, 'complete'])
+        ->name('materi.complete');
+
 
     Route::post('/dashboard/kelas/enroll/{course}', [KelasController::class, 'enroll'])->name('kelas.enroll');
 
